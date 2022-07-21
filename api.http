@@ -1,0 +1,22 @@
+POST http://localhost:5001/v1/users/login HTTP/1.1
+content-type: application/json
+
+{
+    "email": "felipe.lima.flr@gmail.com",
+    "password": "2610663045656685"
+}
+
+###
+GET http://localhost:5001/v1/users HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE4NCIsImVtYWlsIjoiZmVsaXBlLmxpbWEuZmxyQGdtYWlsLmNvbSIsImlhdCI6MTY1ODI0MTk0OX0.S2lZcqgdwPpq4tAnf9DvGwoH10VdVl1xNXsKAfd5XF8
+
+###
+GET http://localhost:5001/v1/users/184 HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE4NCIsImVtYWlsIjoiZmVsaXBlLmxpbWEuZmxyQGdtYWlsLmNvbSIsImlhdCI6MTY1ODQxMDY3NCwiZXhwIjoxNjU4NDEyNDc0fQ.84ZQmx_ThtlczqdKL2VEevGHjL5hH6is51io5skeaXk
+
+###
+GET http://localhost:5001/v1/users/validateToken HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE4NCIsImVtYWlsIjoiZmVsaXBlLmxpbWEuZmxyQGdtYWlsLmNvbSIsImlhdCI6MTY1ODQxMDY3NCwiZXhwIjoxNjU4NDEyNDc0fQ.84ZQmx_ThtlczqdKL2VEevGHjL5hH6is51io5skeaXk
