@@ -1,8 +1,9 @@
 import express from "express";
 import cors from "cors";
-import usersRoutes from "./routes/usersRoutes";
 import { expressjwt } from "express-jwt";
 import dotenv from "dotenv";
+import usersRoutes from "./routes/usersRoutes";
+import professionalsRoutes from "./routes/professionalsRoutes";
 
 dotenv.config();
 const port = process.env.SERVER_PORT;
@@ -26,6 +27,7 @@ app.use((err, req, res, next) => {
 });
 
 app.use("/v1/users", usersRoutes);
+app.use("/v1/professionals", professionalsRoutes);
 
 app.listen(port, () => {
   console.log("servidor rodando");

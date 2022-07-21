@@ -24,5 +24,12 @@ export class ProfessionalsRepository implements IProfessionalsRepository {
     async getAll(): Promise<Professional[]> {
         return await this._baseRepository.find({ order: { id: "ASC" } });
     }
+    async getProfessionalsFavorities(userId: number): Promise<Professional[]>{
+        const result = await this._baseRepository.createQueryBuilder("professionals")
+        .leftJoinAndSelect("favorite_professionals", "favorite", "favorite.professional_id = professionals.id")
+        .where("professionals.user_id = :user_id", { user_id: userId })
+        .getMany();
 
+        return result;
+    }
 }
