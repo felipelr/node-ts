@@ -12,7 +12,13 @@ export class ClientsRepository implements IClientsRepository {
     async getByUserId(userId: number): Promise<Client> {
         return await this._baseRepository.findOneBy({ id: userId });
     }
-    async save(entity: Client): Promise<Client> {
+    async insert(entity: Client): Promise<Client> {
+        const _new = await this._baseRepository.create(entity);
+        return await this._baseRepository.save(_new);
+    }
+    async update(entity: Client): Promise<Client> {
+        const _old = await this._baseRepository.findOneBy({ id: entity.id });
+        this._baseRepository.merge(_old, entity);
         return await this._baseRepository.save(entity);
     }
     async delete(id: number): Promise<void> {

@@ -10,7 +10,14 @@ export class UsersRepository implements IUsersRepository {
         this._baseRepository = dataSource.getRepository(User);
     }
 
-    async save(entity: User): Promise<User> {
+    async insert(entity: User): Promise<User> {
+        const _new = await this._baseRepository.create(entity);
+        return await this._baseRepository.save(_new);
+    }
+
+    async update(entity: User): Promise<User> {
+        const _old = await this._baseRepository.findOneBy({ id: entity.id });
+        this._baseRepository.merge(_old, entity);
         return await this._baseRepository.save(entity);
     }
 

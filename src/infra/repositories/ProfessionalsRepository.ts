@@ -12,7 +12,13 @@ export class ProfessionalsRepository implements IProfessionalsRepository {
     async getByUserId(userId: number): Promise<Professional> {
         return await this._baseRepository.findOneBy({ id: userId });
     }
-    async save(entity: Professional): Promise<Professional> {
+    async insert(entity: Professional): Promise<Professional> {
+        const _new = await this._baseRepository.create(entity);
+        return await this._baseRepository.save(_new);
+    }
+    async update(entity: Professional): Promise<Professional> {
+        const _old = await this._baseRepository.findOneBy({ id: entity.id });
+        this._baseRepository.merge(_old, entity);
         return await this._baseRepository.save(entity);
     }
     async delete(id: number): Promise<void> {
@@ -23,13 +29,5 @@ export class ProfessionalsRepository implements IProfessionalsRepository {
     }
     async getAll(): Promise<Professional[]> {
         return await this._baseRepository.find({ order: { id: "ASC" } });
-    }
-    async getProfessionalsFavorities(userId: number): Promise<Professional[]>{
-        const result = await this._baseRepository.createQueryBuilder("professionals")
-        .leftJoinAndSelect("favorite_professionals", "favorite", "favorite.professional_id = professionals.id")
-        .where("professionals.user_id = :user_id", { user_id: userId })
-        .getMany();
-
-        return result;
     }
 }
