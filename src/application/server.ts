@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import usersRoutes from "./routes/usersRoutes";
 import professionalsRoutes from "./routes/professionalsRoutes";
 import ratingsRoutes from "./routes/ratingsRoutes";
+import categoriesRoutes from "./routes/categoriesRoutes"
 
 dotenv.config();
 const port = process.env.SERVER_PORT;
@@ -30,6 +31,7 @@ app.use((err, req, res, next) => {
 app.use("/v1/users", usersRoutes);
 app.use("/v1/professionals", professionalsRoutes);
 app.use("/v1/ratings", ratingsRoutes);
+app.use("/v1/categories", categoriesRoutes);
 
 app.listen(port, () => {
   console.log("servidor rodando");
