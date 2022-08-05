@@ -46,7 +46,7 @@ usersRoutes.post("/login", async (request: JWTRequest, response: Response) => {
     const loginResult = await loginUseCase.execute({ email, password });
     if (loginResult) {
       const sub = { id: loginResult.id, email: loginResult.email }
-      const accessToken = jwt.sign(sub, process.env.JWT_SECRET, { expiresIn: "30m" });
+      const accessToken = jwt.sign(sub, process.env.JWT_SECRET, { expiresIn: "12h" });
       response.status(200).json({ token: accessToken, user: { ...loginResult } });
     }
     else {

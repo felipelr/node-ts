@@ -5,11 +5,12 @@ dotenv.config();
 const MySqlDataSource = new DataSource({
     type: "mysql",
     host: process.env.MYSQL_HOST,
-    port: process.env.MYSQL_PORT,
+    port: parseInt(process.env.MYSQL_PORT),
     username: process.env.MYSQL_USER,
     password: process.env.MYSQL_PASSWORD,
     database: process.env.MYSQL_DATABASE,
-    entities: ["src/domain/entities/*.ts"],
+    //entities: ["src/domain/entities/*.ts"], //dev
+    entities: ["dist/src/domain/entities/*.js"], //prod
 });
 
 MySqlDataSource.initialize()

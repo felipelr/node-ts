@@ -10,7 +10,7 @@ export class ClientsRepository implements IClientsRepository {
     }
 
     async getByUserId(userId: number): Promise<Client> {
-        return await this._baseRepository.findOneBy({ id: userId });
+        return await this._baseRepository.findOneBy({ user_id: userId });
     }
     async insert(entity: Client): Promise<Client> {
         const _new = await this._baseRepository.create(entity);

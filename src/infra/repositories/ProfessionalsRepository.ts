@@ -10,7 +10,7 @@ export class ProfessionalsRepository implements IProfessionalsRepository {
     }
 
     async getByUserId(userId: number): Promise<Professional> {
-        return await this._baseRepository.findOneBy({ id: userId });
+        return await this._baseRepository.findOneBy({ user_id: userId });
     }
     async insert(entity: Professional): Promise<Professional> {
         const _new = await this._baseRepository.create(entity);
