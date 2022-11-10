@@ -1,7 +1,10 @@
-import { Column, Entity, JoinColumn, ManyToOne } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from "typeorm";
 import { BaseEntity } from "./BaseEntity";
+import { Category } from "./Category";
 import { Client } from "./Client";
+import { ProfessionalServiceOrder } from "./ProfessionalServiceOrder";
 import { Service } from "./Service";
+import { Subcategory } from "./Subcategory";
 
 @Entity({name: "clients_service_orders"})
 export class ClientServiceOrder extends BaseEntity {
@@ -14,6 +17,12 @@ export class ClientServiceOrder extends BaseEntity {
 
     @Column({name: "service_id"})
     service_id: number;
+
+    @Column({name: "subcategory_id"})
+    subcategory_id: number;
+
+    @Column({name: "category_id"})
+    category_id: number;
 
     @Column({name: "professional_selected"})
     professional_selected: number;
@@ -37,4 +46,15 @@ export class ClientServiceOrder extends BaseEntity {
     @ManyToOne(() => Service)
     @JoinColumn({ name: 'service_id' })
     service: Service
+
+    @ManyToOne(() => Subcategory)
+    @JoinColumn({ name: 'subcategory_id' })
+    subcategory: Subcategory
+
+    @ManyToOne(() => Category)
+    @JoinColumn({ name: 'category_id' })
+    category: Category
+
+    @OneToMany(() => ProfessionalServiceOrder, (professionalServiceOrder) => professionalServiceOrder.clientServiceOrder)
+    professionalServiceOrders: ProfessionalServiceOrder[]
 }

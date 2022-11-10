@@ -19,7 +19,7 @@ usersRoutes.get("/validateToken", async (request: JWTRequest, response: Response
     const { id } = request.auth;
     const usersRepository = new UsersRepository(MySqlConnection.MySqlDataSource);
     const clientsRepository = new ClientsRepository(MySqlConnection.MySqlDataSource);
-    const professionalsRepository = new ProfessionalsRepository(MySqlConnection.MySqlDataSource);
+    const professionalsRepository = new ProfessionalsRepository(MySqlConnection.MySqlDataSource);    
     try {
       const user = await usersRepository.getById(parseInt(id));
       const client = await clientsRepository.getByUserId(user.id);

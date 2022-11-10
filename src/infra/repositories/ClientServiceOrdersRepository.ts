@@ -34,4 +34,14 @@ export class ClientServiceOrdersRepository implements IClientServiceOrdersReposi
     async getAll(): Promise<ClientServiceOrder[]> {
         return await this._baseRepository.find({ order: { id: "ASC" } });
     }
+    async getAllByClient(client_id: number): Promise<ClientServiceOrder[]> {        
+        return await this._baseRepository.createQueryBuilder("clients_service_orders")
+            .leftJoinAndSelect("clients_service_orders.service", "services")
+            .leftJoinAndSelect("clients_service_orders.subcategory", "subcategories")
+            .leftJoinAndSelect("clients_service_orders.category", "categories")
+            .leftJoinAndSelect("clients_service_orders.professionalServiceOrders", "professional_service_orders")
+            .leftJoinAndSelect("professional_service_orders.professional", "professionals")
+            .where("client_id = :client_id AND status = 'opened'", { client_id: client_id })
+            .getMany();
+    }
 }

@@ -14,4 +14,11 @@ clientServiceOrdersRoutes.get("/user/:user_id", async (request: JWTRequest, resp
     response.status(200).json({ clientsOrders });
 });
 
+clientServiceOrdersRoutes.get("/getByClient/:client_id", async (request: JWTRequest, response: Response) => {
+    const { client_id } = request.params;
+    const clientServiceOrdersRepository = new ClientServiceOrdersRepository(MySqlConnection.MySqlDataSource);
+    const clientsOrders = await clientServiceOrdersRepository.getAllByClient(parseInt(client_id));
+    response.status(200).json({ clientsOrders });
+});
+
 export default clientServiceOrdersRoutes;

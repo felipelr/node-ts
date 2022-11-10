@@ -9,8 +9,8 @@ const MySqlDataSource = new DataSource({
     username: process.env.MYSQL_USER,
     password: process.env.MYSQL_PASSWORD,
     database: process.env.MYSQL_DATABASE,
-    //entities: ["src/domain/entities/*.ts"], //dev
-    entities: ["dist/src/domain/entities/*.js"], //prod
+    entities: ["src/domain/entities/*.ts"], //dev
+    //entities: ["dist/src/domain/entities/*.js"], //prod
 });
 
 MySqlDataSource.initialize()

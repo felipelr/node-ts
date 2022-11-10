@@ -1,5 +1,6 @@
-import { Column, Entity } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne } from "typeorm";
 import { BaseEntity } from "./BaseEntity";
+import { Subcategory } from "./Subcategory";
 
 @Entity({name: "services"})
 export class Service extends BaseEntity {
@@ -12,4 +13,8 @@ export class Service extends BaseEntity {
 
     @Column({name: "description"})
     description: string;
+
+    @ManyToOne(() => Subcategory)
+    @JoinColumn({ name: 'subcategory_id' })
+    subcategory: Subcategory
 }
