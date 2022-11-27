@@ -1,5 +1,5 @@
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from "typeorm";
-import { BaseEntity } from "./BaseEntity";
+import { BaseWithDatesEntity } from "./BaseWithDatesEntity";
 import { Category } from "./Category";
 import { Client } from "./Client";
 import { ProfessionalServiceOrder } from "./ProfessionalServiceOrder";
@@ -7,7 +7,7 @@ import { Service } from "./Service";
 import { Subcategory } from "./Subcategory";
 
 @Entity({name: "clients_service_orders"})
-export class ClientServiceOrder extends BaseEntity {
+export class ClientServiceOrder extends BaseWithDatesEntity {
 
     @Column({name: "client_id"})
     client_id: number;

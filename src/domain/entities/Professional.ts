@@ -1,8 +1,8 @@
 import { Column, Entity } from "typeorm";
-import { BaseEntity } from "./BaseEntity";
+import { BaseWithDatesEntity } from "./BaseWithDatesEntity";
 
 @Entity({name: "professionals"})
-export class Professional extends BaseEntity {
+export class Professional extends BaseWithDatesEntity {
 
     @Column({name: "name"})
     name: string;

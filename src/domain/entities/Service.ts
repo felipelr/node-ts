@@ -1,9 +1,9 @@
 import { Column, Entity, JoinColumn, ManyToOne } from "typeorm";
-import { BaseEntity } from "./BaseEntity";
+import { BaseWithDatesEntity } from "./BaseWithDatesEntity";
 import { Subcategory } from "./Subcategory";
 
 @Entity({name: "services"})
-export class Service extends BaseEntity {
+export class Service extends BaseWithDatesEntity {
 
     @Column({name: "subcategory_id"})
     subcategory_id: number;

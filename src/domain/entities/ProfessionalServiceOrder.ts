@@ -1,10 +1,10 @@
 import { Column, Entity, JoinColumn, ManyToOne } from "typeorm";
-import { BaseEntity } from "./BaseEntity";
+import { BaseWithDatesEntity } from "./BaseWithDatesEntity";
 import { ClientServiceOrder } from "./ClientServiceOrder";
 import { Professional } from "./Professional";
 
 @Entity({name: "professionals_service_orders"})
-export class ProfessionalServiceOrder extends BaseEntity {
+export class ProfessionalServiceOrder extends BaseWithDatesEntity {
 
     @Column({name: "clients_service_orders_id"})
     clients_service_orders_id: number;
