@@ -9,7 +9,7 @@ content-type: application/json
 ###
 GET http://localhost:5001/v1/users HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE4NCIsImVtYWlsIjoiZmVsaXBlLmxpbWEuZmxyQGdtYWlsLmNvbSIsImlhdCI6MTY1ODI0MTk0OX0.S2lZcqgdwPpq4tAnf9DvGwoH10VdVl1xNXsKAfd5XF8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE4NCIsImVtYWlsIjoiZmVsaXBlLmxpbWEuZmxyQGdtYWlsLmNvbSIsImlhdCI6MTY3MDExNzk2MiwiZXhwIjoxNjcwMTYxMTYyfQ.NAWlkGInpvXMeQB_TJO8mJwnrWbSrLJIoxY19C6vkIo
 
 ###
 GET http://localhost:5001/v1/users/184 HTTP/1.1
